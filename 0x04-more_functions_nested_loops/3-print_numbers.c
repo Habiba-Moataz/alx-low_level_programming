@@ -5,14 +5,13 @@
  *
  * Return: Always 0.
  */
-
 void print_numbers(void)
 {
-	int c;
-	
-	for (c = 48; c < 58; c++)
+	int a;
+
+	for (a = 48; a < 58; a++)
 	{
-		_putchar(c);
+		_putchar(a);
 	}
 	_putchar('\n');
 }

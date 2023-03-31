@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  * _strcmp - compare 2 strings.
  * @s1: string to be compared.
@@ -21,3 +21,4 @@ int _strcmp(char *s1, char *s2)
 	return (*s1 - *s2);
 	}
 }
+

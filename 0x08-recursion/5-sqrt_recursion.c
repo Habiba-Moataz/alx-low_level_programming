@@ -23,4 +23,3 @@ int _sqrt2(int a, int b)
 	else
 		return (_sqrt2(a += 1, b));
 }
-

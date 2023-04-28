@@ -1,42 +1,45 @@
-/*
- * File: 2-add_node.c
- * Auth: Brennan D Baraban
- */
-
 #include "lists.h"
-#include <string.h>
+
+int _strlen_recursion(char *s);
 
 /**
- * add_node - Adds a new node at the beginning
- *            of a list_t list.
- * @head: A pointer to the head of the list_t list.
- * @str: The string to be added to the list_t list.
- *
- * Return: If the function fails - NULL.
- *         Otherwise - the address of the new element.
- */
+ * add_node - adds a new node at the beginning of a list_t list.
+ * @head: pointer to the first element of the list.
+ * @str: string to set in the new node.
+ * Return: address of the new element, or NULL if it failed
+ **/
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *new_head = malloc(sizeof(list_t));
+	list_t *new;
 
-	if (!head || !new_head)
-		return (NULL);
-	if (str)
+	new = malloc(sizeof(list_t));
+	if (new == NULL)
 	{
-		new_head->str = strdup(str);
-		if(!new_head->str)
-		{
-			free(new_head);
-			return (NULL);
-		}
-		new_head->len = _strlen(new_head->str);
+		return (NULL);
 	}
 
-	for (len = 0; str[len];)new_head->
-		len++;
+	new->str = strdup(str);
+	if (!new->str)
+	{
+		free(new);
+		return (NULL);
+	}
+	new->len = _strlen_recursion(new->str);
+	new->next = *head;
+	*head = new;
 
-	new_head>next = *head;
-	*head = new_head;
+	return (new);
+}
 
-	return (new_head);
+/**
+ * _strlen_recursion - returns the length of a string.
+ * @s: string.
+ * Return: length of @s.
+ */
+int _strlen_recursion(char *s)
+{
+	if (*s == 0)
+		return (0);
+	else
+		return (1 + _strlen_recursion(s + 1));
 }
